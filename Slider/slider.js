@@ -40,3 +40,6 @@ function carousel() {
     slide.style.transform = `translateX(-${counter * 100}%)`;
   });
 }
+
+
+

@@ -11,7 +11,7 @@ const text = [
     `Rutters Plate Fleet boom chandler Brethren of the Coast handsomely lookout marooned brigantine knave. Buccaneer gangway jack rum loot spyglass line Jack Tar fore gaff. Gaff topmast scuttle ballast swab draught measured fer yer chains dance the hempen jig Chain Shot yardarm.`,
   ];
 
-
+console.log(typeof(text));
   const form=document.querySelector(".lorem-form")
   const amount=document.getElementById("amount")
   const result=document.querySelector(".lorem-text")

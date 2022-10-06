@@ -17,15 +17,8 @@ $(prevBtn).click( function(){
 });
 
 function carousel() {
-  // working with slides
-  // if (counter === slides.length) {
-  //   counter = 0;
-  // }
-  // if (counter < 0) {
-  //   counter = slides.length - 1;
-  // }
-  // working with buttons
-
+  console.log(counter)
+console.log(slides.length-1);
   if (counter < slides.length - 1) {
     $(nextBtn).show();
   } else {

@@ -11,8 +11,9 @@ navtoggle.addEventListener("click",function(){
 
     // dynamic height toggle
     const containerheight=linkscontainer.getBoundingClientRect().height;
+    // console.log(containerheight);
     const linksheight=links.getBoundingClientRect().height;
-
+    // console.log(linksheight);
     if(containerheight===0){
         linkscontainer.style.height=`${linksheight}px`
     }
@@ -25,7 +26,7 @@ const navbar=document.getElementById("nav");
 const Toplink=document.querySelector(".top-link")
 window.addEventListener("scroll",function(){
     const scrollheight=(window.pageYOffset)
-    // console.log(scrollheight)
+    console.log(scrollheight)
     const navbarheight=navbar.getBoundingClientRect().height;
     // console.log(navbarheight)
     if(scrollheight>navbarheight){

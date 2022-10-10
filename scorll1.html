@@ -2,11 +2,26 @@
 <html>
 
 <head>
+<style>
+    .bar-long {
+height: 5px;
+background-color: #009ACF;
+width: 0px;
+z-index: 1000;
+position: fixed;
+top: 50px;
 
+}
+
+body {
+ height:3000px
+   }
+</style>
 </head>
 
 <body>
-    <button id="hello" style="width:50px;height: 50px;position: sticky;right: 35px;top: 71px;"></button>
+    <div class="bar-long"></div>
+    <!-- <button id="hello" style="width:50px;height: 50px;position: sticky;right: 35px;top: 71px;"></button>
     <div class="bar-long">
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat veniam nam maxime ea, illo maiores ad
             pariatur, reprehenderit nesciunt, voluptate reiciendis! Incidunt, libero voluptatem? Hic in aperiam delectus
@@ -128,20 +143,39 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo maiores odio ullam error nobis accusamus
                 reiciendis ipsa numquam nam alias, id necessitatibus totam dolorem? Exercitationem recusandae dignissimos ex
                 cumque totam.</p>
-    </div>
+    </div> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
-       $(window).scroll(function() {
+      $(window).scroll(function() {
 	var conheight = $('.post').height();
-    var startDistance = 0;
-	var scrollTop = $(document).scrollTop();
-    var scrollAmount = $(window).scrollTop();
+
+	
+	var startDistance = 0;
+	
+    var scrollTop = $(document).scrollTop();
+    
+    
+     var scrollAmount = $(window).scrollTop();
     var documentHeight = $(document).height();
  
     // calculate the percentage the user has scrolled down the page
-    var scrollPercent = Math.floor((scrollAmount / documentHeight) * 100);
+    var scrollPercent = (scrollAmount / documentHeight) * 100;
+    
+ 
+    
+    
+    if (scrollTop > 50) {
+        $('.bar-long').css('width', scrollPercent +"%"  );
+    } else {
+        $('.bar-long').css('width', startDistance);
+    }
+    
+    
     console.log (scrollPercent)
+    
+
 });
+
     </script>
 </body>
 

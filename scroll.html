@@ -193,6 +193,7 @@
         var scroller = new scrollPercent;
         window.onscroll = function (event) {
             const a = (scroller.init());
+            console.log(a);
             const button = document.getElementById("hello");
             button.innerHTML = a;
         };

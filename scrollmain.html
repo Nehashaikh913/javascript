@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+    }
+
+    .container {
+      height: 200vh;
+      min-height: 100vh;
+      display: flex;
+      flex-flow: row;
+      margin: 0 auto;
+      justify-content: center;
+    }
+
+    svg {
+      position: sticky;
+      transform: rotate(-90deg);
+    }
+
+    svg circle {
+      stroke: rgba(0, 0, 0, 0.1);
+      stroke-width: 10px;
+      stroke-linecap: round;
+      fill: transparent;
+    }
+
+    svg .progress-bar {
+      stroke: #3283f3;
+      transition: stroke-dashoffset 0 ease-in-out;
+    }
+
+    .pct {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-feature-settings: "tnum";
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+
+<body>
+<div class="main-con">
+  <div class="container">
+    <p class="pct">0%</p>
+    <svg class="complete" width="200" height="200">
+      <!-- <defs>
+        <linearGradient id="grad">
+          <stop offset="0%" stop-color="#fbc2eb"></stop>
+          <stop offset="100%" stop-color="#000"></stop>
+        </linearGradient>
+      </defs> -->
+      <circle cx="100" cy="100" r="80"></circle>
+      <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
+    </svg>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+</div>
+  <script>
+    window.onload = function () {
+      const container = document.querySelector('.container');
+      const svg = document.querySelector('svg');
+      const progressBar = document.querySelector('.progress-bar');
+      const pct = document.querySelector('.pct');
+      const totalLength = progressBar.getTotalLength();
+      // console.log(totalLength)
+      setTopValue(svg);
+      progressBar.style.strokeDasharray = totalLength;
+      progressBar.style.strokeDashoffset = totalLength;
+
+      window.addEventListener('scroll', () => {
+        setProgress(container, pct, progressBar, totalLength);
+      });
+
+      window.addEventListener('resize', () => {
+        setTopValue(svg);
+      });
+    }
+    function setTopValue(svg) {
+      svg.style.top = document.documentElement.clientHeight * 0.5 - (svg.getBoundingClientRect().height * 0.5) + 'px';
+    }
+    function setProgress(container, pct, progressBar, totalLength) {
+      const clientHeight = document.documentElement.clientHeight;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollTop = document.documentElement.scrollTop;
+      // console.log(clientHeight,scrollHeight,scrollTop)
+      const percentage = scrollTop / (scrollHeight - clientHeight);
+      pct.innerHTML = Math.round(percentage * 100) + '%';
+      progressBar.style.strokeDashoffset = totalLength - totalLength * percentage;
+    }
+  </script>
+</body>
+
+</html>

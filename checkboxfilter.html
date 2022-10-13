@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .categorya,
+        .categoryb,
+        .categoryc {
+            display: none;
+            width: 30px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background: red;
+            margin: 10px;
+            float: left;
+            font-size: 11px;
+            color: white;
+            font-family: sans-serif;
+        }
+
+        .categoryb {
+            background: blue;
+        }
+
+        .categorya.categoryb {
+            background: purple;
+        }
+
+        .categoryc {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="filters">
+        <li>
+            <input type="checkbox" value="categorya" id="filter-categorya" />
+            <label for="filter-categorya">Category A</label>
+        </li>
+        <li>
+            <input type="checkbox" value="categoryb" id="filter-categoryb" />
+            <label for="filter-categoryb">Category B</label>
+        </li>
+        <li>
+            <input type="checkbox" value="categoryc" id="filter-categoryc" />
+            <label for="filter-categoryc">Category C</label>
+        </li>
+    </ul>
+
+    <div class="categorya categoryb">A, B</div>
+    <div class="categorya">A</div>
+    <div class="categorya">A</div>
+    <div class="categorya">A</div>
+    <div class="categoryb">B</div>
+    <div class="categoryb">B</div>
+    <div class="categoryb">B</div>
+    <div class="categoryc">C</div>
+    <div class="categoryc">C</div>
+    <div class="categoryc">C</div>
+    <div class="categoryc">C<div>
+
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                    <script>
+                        $("#filters :checkbox").click(function() {
+                            $("div").hide();
+                            $("#filters :checkbox:checked").each(function() {
+                                $("." + $(this).val()).show();
+                            });
+                        });
+                    </script>
+</body>
+
+</html>

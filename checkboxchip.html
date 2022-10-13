@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .chip {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 25px;
+            background-color: #3199cc;
+            margin-bottom: 10px;
+        }
+
+        .chip .closebtn {
+            cursor: pointer;
+            color: red;
+            background: #fff;
+            padding: 0px 3px;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 10px;
+            margin-left: 5px;
+        }
+
+        .chip>label {
+            display: inline;
+            font-size: 13px;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .chkbox {
+            background-color: #ebebeb;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .chkbox-list {
+            padding: 10px;
+            color: #000;
+            font-size: 13px;
+        }
+
+        .chkbox-container {
+            display: block;
+            position: relative;
+            padding-left: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="">Section</label>
+    <div id="display"></div>
+
+    <div class="chkbox">
+        <div class="chkbox-list" id="filters">
+            <label class="chkbox-container">One
+                <input type="checkbox" value="categorya" id="filter-categorya">
+                <span class="checkmark"></span>
+            </label>
+            <label class="chkbox-container">Two
+                <input type="checkbox" value="categoryb" id="filter-categoryb">
+                <span class="checkmark"></span>
+            </label>
+            <label class="chkbox-container">Three
+                <input type="checkbox" value="categoryc" id="filter-categoryc">
+                <span class="checkmark"></span>
+            </label>
+            <label class="chkbox-container">Four
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+    <div class="categorya categoryb">A, B</div>
+    <div class="categorya">A</div>
+    <div class="categorya">A</div>
+    <div class="categorya">A</div>
+    <div class="categoryb">B</div>
+    <div class="categoryb">B</div>
+    <div class="categoryb">B</div>
+    <div class="categoryc">C</div>
+    <div class="categoryc">C</div>
+    <div class="categoryc">C</div>
+    <div class="categoryc">C<div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        function Chip(label) {
+            this.checkedItems = [];
+            this.label = label;
+            this.displayarea = document.getElementById("display");
+            this.checkbox = document.getElementsByClassName("chkbox-container");
+        }
+
+        Chip.prototype.display = function () {
+            a.displayarea.innerHTML = "";
+            for (let i in a.checkedItems) {
+                a.displayarea.insertAdjacentHTML("beforeend",
+                    `<div class="chip">
+            <label>${a.checkedItems[i].parentElement.innerText}</label>
+            <span class="closebtn" name="${a.checkedItems[i].parentElement.innerText}">x</span>
+        </div>`
+                );
+                document.getElementsByClassName("closebtn")[i].addEventListener("click", a.unchecked);
+            }
+        }
+
+        Chip.prototype.checkfn = function () {
+            a.checkedItems = [];
+            var inputs = document.querySelectorAll(".chkbox-container input");
+            for (let i in inputs) {
+                if (inputs[i].checked)
+                    a.checkedItems.push(inputs[i]);
+
+            }
+            a.display();
+        }
+
+        Chip.prototype.unchecked = function (e) {
+            var ele = e.target.getAttribute("name");
+            for (let i in a.checkedItems) {
+                a.checkedItems[i].parentElement.innerText == ele ? a.checkedItems[i].checked = false : a.checkedItems[i].checked = true;
+            }
+            a.checkfn();
+        }
+
+        Chip.prototype.addevent = function () {
+            var chkinp = document.querySelectorAll(".chkbox-container input");
+            for (let i = 0; i <= chkinp.length - 1; i++) {
+                chkinp[i].addEventListener("click", a.checkfn);
+            }
+        }
+
+        var a = new Chip;
+        a.checkfn();
+        a.addevent();
+
+
+        //   $("#filters :checkbox").click(function () {
+        //             $("div").hide();
+        //             $("#filters :checkbox:checked").each(function () {
+        //                 $("." + $(this).val()).show();
+        //             });
+        //         });
+    </script>
+</body>
+
+</html>

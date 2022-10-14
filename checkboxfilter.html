@@ -15,7 +15,7 @@
             height: 20px;
             line-height: 20px;
             text-align: center;
-            background: red;
+            background: rgb(37, 129, 91);
             margin: 10px;
             float: left;
             font-size: 11px;
@@ -65,15 +65,15 @@
     <div class="categoryc">C</div>
     <div class="categoryc">C<div>
 
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                    <script>
-                        $("#filters :checkbox").click(function() {
-                            $("div").hide();
-                            $("#filters :checkbox:checked").each(function() {
-                                $("." + $(this).val()).show();
-                            });
-                        });
-                    </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script>
+                $("#filters :checkbox").click(function () {
+                    $("div").hide();
+                    $("#filters :checkbox:checked").each(function () {
+                        $("." + $(this).val()).show();
+                    });
+                });
+            </script>
 </body>
 
 </html>
